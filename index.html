@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Home Affordability Calculator </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Home Affordability Calculator</h1>
+	  <p>By: Roderick Mendoza</p>
+    </header>
+    <main>
+      <p>Welcome, please enter the information for the fields provided below. <br>
+		This information will be used to display home affordability in different cities around the US. <br>
+		Note: the information provided will not be collected, persisted, or otherwise utilized for any purpose outside of calculations within the given session.</p>
+      <form>
+        <label for="income">Average Household Income (last 3-5 years):</label><br>
+        <input type="number" id="income" name="income" required placeholder="($)">
+		<br>
+        <label for="creditscore">Credit Score Range:</label><br>
+        <input type="radio" id="creditscore_poor" name="creditscore" value="350-629">
+		<label for="creditscore_poor" id="creditscore_poor">350-629 (Poor)</label><br>
+		<input type="radio" id="creditscore_average" name="creditscore" value="630-689 ">
+		<label for="creditscore_average" id="creditscore_average" >630-689 (Average)</label><br>
+		<input type="radio" id="creditscore_good" name="creditscore" value="690-719 ">
+		<label for="creditscore_good" id="creditscore_good" >690-719 (Good)</label><br>
+		<input type="radio" id="creditscore_excellent" name="creditscore" value="720-850 ">
+		<label for="creditscore_excellent" id="creditscore_excellent">720-850 (Excellent!)</label><br>
+		<label for="debt">Monthly Debts/Obligations:</label><br>
+        <input type="number" id="debt" name="debt" placeholder="($)" required ><br>
+		<label for="debt">Amount Available for a Down Payment:</label><br>
+        <input type="number" id="downpayment" name="downpayment" placeholder="($)" required ><br>
+        <button type="submit">Submit</button>
+      </form>
+	  <br>
+    </main>
+    <footer>
+	  <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="50" height="50"></a>
+      <a href="https://github.com/rodmen07"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" width="50" height="50"></a>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

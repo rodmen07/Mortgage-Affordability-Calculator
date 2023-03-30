@@ -1,0 +1,36 @@
+html {
+    text-align: center;
+}
+
+header {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+
+    text-decoration: underline;
+}
+
+form > label {
+    width: 200px;
+}
+
+input{
+    margin-bottom: 10px;
+}
+
+#creditscore_poor {
+    background-color: rgb(185, 24, 24);
+}
+
+#creditscore_average {
+    background-color: rgb(221, 224, 17);
+}
+
+#creditscore_good {
+    background-color: rgb(18, 100, 224);
+}
+
+#creditscore_excellent {
+    background-color: rgb(10, 128, 26);
+}
