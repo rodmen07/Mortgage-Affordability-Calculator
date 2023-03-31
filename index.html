@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title> Home Affordability Calculator </title>
     <meta charset="UTF-8" />
@@ -8,17 +9,20 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
   </head>
+
   <body>
-    <header>
+    <header class="hidden">
       <h1>Home Affordability Calculator</h1>
 	  <p>By: Roderick Mendoza</p>
     </header>
+
     <main>
-      <p>Welcome, please enter the information for the fields provided below. <br>
+      <p id="main-paragraph">Welcome, please enter the information for the fields provided below. <br>
 		This information will be used to display home affordability in different cities around the US. <br>
-		Note: the information provided will not be collected, persisted, or otherwise utilized for any purpose outside of calculations within the given session.</p>
-      <form>
-        <label for="income">Average Household Income (last 3-5 years):</label><br>
+		Note: the information provided will not be collected, persisted, or otherwise utilized for any purpose outside of calculations within the given session. <br>
+    (Press enter to continue)</p>
+      <form class="hidden">
+        <label for="income">Average Income:</label><br> <!-- Include Average Househole Income for last 3-5 years is hover-description -->
         <input type="number" id="income" name="income" required placeholder="($)">
 		<br>
         <label for="creditscore">Credit Score Range:</label><br>
@@ -34,14 +38,15 @@
         <input type="number" id="debt" name="debt" placeholder="($)" required ><br>
 		<label for="debt">Amount Available for a Down Payment:</label><br>
         <input type="number" id="downpayment" name="downpayment" placeholder="($)" required ><br>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit</button> <br>
+        <p id="form-note">Hover over field label for additional information (e.g. Average Income)</p>
       </form>
 	  <br>
     </main>
+
     <footer>
 	  <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="50" height="50"></a>
       <a href="https://github.com/rodmen07"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" width="50" height="50"></a>
     </footer>
-    <script src="script.js"></script>
   </body>
 </html>
