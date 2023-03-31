@@ -53,7 +53,7 @@ I reference Nerd Wallet's mortgage calculator for affordability formula:
 
 [](https://www.nerdwallet.com/mortgages/how-much-house-can-i-afford)<https://www.nerdwallet.com/mortgages/how-much-house-can-i-afford>
 
-I plan to source the data to find US cities with average housing prices within the given range as well as average mortgage rates by using the FRED API from the Federal Reserve Bank of St. Louis:
+I plan to source the data to find US states with average housing prices within the given range as well as average mortgage rates by using the FRED API from the Federal Reserve Bank of St. Louis:
 
 [](https://fred.stlouisfed.org/docs/api/fred/)<https://fred.stlouisfed.org/docs/api/fred/>
 
