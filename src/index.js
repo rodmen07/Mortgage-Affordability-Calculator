@@ -1,93 +1,101 @@
 // The following code will fade in the header element on start.
 document.addEventListener("DOMContentLoaded", function() {
-    var header = document.getElementsByTagName("header");
+    const header = document.getElementsByTagName("header");
     header[0].classList.remove("hidden");
     header[0].classList.add("visible1");
   });
 
-// The following code will render each line of the main paragraph element on start.
+// The following code will fade in the main paragraph element on start with a delay.
 document.addEventListener("DOMContentLoaded", function() {
-    var paragraph = document.getElementById("main-paragraph");
-    var lines = paragraph.innerHTML.split("<br>");
-
-    // Replace the paragraph content with the first line
-    paragraph.innerHTML = lines[0];
-
-    lines.slice(1).forEach(function(line, index) {
-      var delay = 1000 * (index + 1);
-      if (index === lines.length - 2) {
-        // Adjust delay for last line to be proportional to its length
-        delay += 1000 * (line.length / 20);
-      }
-      setTimeout(function() {
-        paragraph.innerHTML += "<br>" + line;
-        paragraph.style.opacity = "1"; // Show the paragraph after the first line
-      }, delay);
+    const paragraph = document.getElementById("main-paragraph");
+        paragraph.classList.remove("hidden");
+        paragraph.classList.add("visible2");
     });
-  });
+document.addEventListener("DOMContentLoaded", function() {
+    const paragraph = document.getElementById("user-prompt1");
+        paragraph.classList.remove("hidden");
+        paragraph.classList.add("visible3");
+    });
 
 // The following code creates an event listener for enter to transition the form element onto the page.
-document.addEventListener("keydown", function(event) {
+function handleEnterForm(event) {
     if (event.code === "Enter") {
-      var form = document.getElementsByTagName("form");
-      form[0].classList.add("visible2");
-      form[0].classList.remove("hidden");
+        const form = document.getElementsByTagName("form");
+        form[0].classList.add("visible2");
+        form[0].classList.remove("hidden");
     }
+}
+document.addEventListener("keydown", handleEnterForm);
+
+// The following code creates an event listener for the submit button to save the user input and transition the form element off the page.
+document.addEventListener("DOMContentLoaded", () => {
+    const prompt1 = document.getElementById("user-prompt1");
+    const prompt2 = document.getElementById("user-prompt2");
+    const form = document.getElementById("user-form");
+    const submitBtn = document.getElementById("submit-btn");
+    const results = document.getElementById("results-paragraph");
+    const dti20 = document.getElementById("user-20%-DTI");
+    const dti40 = document.getElementById("user-40%-DTI");
+
+
+    submitBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        // Save user input values to variables
+        const income = document.getElementById("income").value;
+        const creditScore = document.querySelector('input[name="creditscore"]:checked').value;
+        const debt = document.getElementById("debt").value;
+        const downPayment = document.getElementById("downpayment").value;
+        const mainParagraph = document.getElementById("main-paragraph");
+
+        mainParagraph.classList.remove("visible2");
+        mainParagraph.classList.add("hidden");
+        prompt1.classList.add("hidden");
+        prompt1.classList.remove("visible3");
+        prompt2.classList.remove("hidden");
+        prompt2.classList.add("visible1");
+        form.classList.add("hidden");
+        form.classList.remove("visible2");
+        results.classList.remove("hidden");
+        results.classList.add("visible1");
+        dti20.classList.remove("hidden");
+        dti20.classList.add("visible1");
+        dti40.classList.remove("hidden");
+        dti40.classList.add("visible1");
+        document.removeEventListener("keydown", handleEnterForm);
   });
+});
 
-// The code below fetches data from the Federal Reserve Economic Data API and creates a bar chart using D3.js. This is a starting point for the actual visualization.
-// const apiKey = 'your_fred_api_key';
-// const minPrice = 200000;
-// const maxPrice = 300000;
 
-// fetch(`https://api.stlouisfed.org/fred/series/observations?series_id=ATNHPIUS41860Q&api_key=${apiKey}&file_type=json&observation_start=2010-01-01&units=lin`)
-//   .then(response => response.json())
-//   .then(data => {
-//     // Process the API response data here
-//     const filteredData = data.observations.filter(obs => {
-//       const value = parseFloat(obs.value);
-//       return value >= minPrice && value <= maxPrice;
-//     });
-//     const cities = filteredData.map(obs => obs.realtime_start);
+// FRED API key
+const apiKey = "cc485c86412c9dee7cd0370084ce6c59";
 
-//     // Create a bar chart using D3
-//     const margin = {top: 20, right: 20, bottom: 30, left: 40};
-//     const width = 960 - margin.left - margin.right;
-//     const height = 500 - margin.top - margin.bottom;
+// FRED series ID for average 30-year fixed mortgage rate
+const seriesId = "MORTGAGE30US";
 
-//     const x = d3.scaleBand()
-//         .range([0, width])
-//         .padding(0.1);
-//     const y = d3.scaleLinear()
-//         .range([height, 0]);
+// URL for FRED API endpoint
+const apiUrl = `https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${apiKey}&file_type=json`;
 
-//     const svg = d3.select("body").append("svg")
-//         .attr("width", width + margin.left + margin.right)
-//         .attr("height", height + margin.top + margin.bottom)
-//       .append("g")
-//         .attr("transform", `translate(${margin.left},${margin.top})`);
+// Function to retrieve data from FRED API and process it
+async function getMortgageRate() {
+  try {
+    // Retrieve data from FRED API
+    const response = await fetch( apiUrl, { mode: 'cors' });
+    console.log(response);
+    const data = await response.json();
 
-//     x.domain(cities);
-//     y.domain([0, d3.max(filteredData, d => parseFloat(d.value))]);
+    // Get the most recent observation value
+    const latestValue = data.observations[0].value;
 
-//     svg.selectAll(".bar")
-//         .data(filteredData)
-//       .enter().append("rect")
-//         .attr("class", "bar")
-//         .attr("x", d => x(d.realtime_start))
-//         .attr("y", d => y(parseFloat(d.value)))
-//         .attr("width", x.bandwidth())
-//         .attr("height", d => height - y(parseFloat(d.value)));
+    // Return the latest 30-year fixed mortgage rate
+    const resultElement = document.getElementById("mortgage-rate");
+    resultElement.innerHTML = `The current average mortgage rate is ${latestValue}%`;
+    return latestValue;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-//     svg.append("g")
-//         .attr("transform", `translate(0,${height})`)
-//         .call(d3.axisBottom(x));
-
-//     svg.append("g")
-//         .call(d3.axisLeft(y));
-
-//   })
-//   .catch(error => {
-//     // Handle any errors here
-//     console.error(error);
-//   });
+// Call the function and log the result to the console
+getMortgageRate().then((result) => {
+  console.log(`The current average 30-year fixed mortgage rate is ${result}%`);
+});

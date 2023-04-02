@@ -32,6 +32,7 @@ input{
 .hidden {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    height: 1px;
 }
 .visible1 {
     opacity: 1;
@@ -41,6 +42,28 @@ input{
     opacity: 1;
     transition: opacity 3s ease-in-out;
 }
+.visible3 {
+    opacity: 1;
+    transition: opacity 5s ease-in-out;
+}
+/* The following styles make the hover-description boxes visible only on hover */
+.hover-description {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+label:hover .hover-description {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 // ID selectors
 #creditscore_poor {
@@ -55,8 +78,3 @@ input{
 #creditscore_excellent {
     background-color: rgb(10, 128, 26);
 }
-#main-paragraph {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-

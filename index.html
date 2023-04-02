@@ -13,39 +13,46 @@
   <body>
     <header class="hidden">
       <h1>Home Affordability Calculator</h1>
-	  <p>By: Roderick Mendoza</p>
+	    <p>By: Roderick Mendoza</p>
     </header>
 
     <main>
-      <p id="main-paragraph">Welcome, please enter the information for the fields provided below. <br>
-		This information will be used to display home affordability in different cities around the US. <br>
-		Note: the information provided will not be collected, persisted, or otherwise utilized for any purpose outside of calculations within the given session. <br>
-    (Press enter to continue)</p>
-      <form class="hidden">
-        <label for="income">Average Income:</label><br> <!-- Include Average Househole Income for last 3-5 years is hover-description -->
+      <p class="hidden" id="main-paragraph">Welcome, please enter the information for the fields provided below. <br>
+		    This information will be used to display home affordability in different cities around the US. <br>
+		    Note: the information provided will not be collected, persisted, or otherwise utilized for any purpose outside of calculations within the given session. <br>
+      </p>
+      <p class="hidden" id="user-prompt1">(Press enter to continue)</p>
+      <form class="hidden" id="user-form">
+        <label for="income">Average Income:<span class="hover-description">Estimated Average Household Income for the last 3-5 years.</span></label><br>
         <input type="number" id="income" name="income" required placeholder="($)">
-		<br>
-        <label for="creditscore">Credit Score Range:</label><br>
+        <br>
+        <label for="creditscore">Credit Score Range:<span class="hover-description">Choose the range that your credit score falls into.</span></label><br>
         <input type="radio" id="creditscore_poor" name="creditscore" value="350-629">
-		<label for="creditscore_poor" id="creditscore_poor">350-629 (Poor)</label><br>
-		<input type="radio" id="creditscore_average" name="creditscore" value="630-689 ">
-		<label for="creditscore_average" id="creditscore_average" >630-689 (Average)</label><br>
-		<input type="radio" id="creditscore_good" name="creditscore" value="690-719 ">
-		<label for="creditscore_good" id="creditscore_good" >690-719 (Good)</label><br>
-		<input type="radio" id="creditscore_excellent" name="creditscore" value="720-850 ">
-		<label for="creditscore_excellent" id="creditscore_excellent">720-850 (Excellent!)</label><br>
-		<label for="debt">Monthly Debts/Obligations:</label><br>
-        <input type="number" id="debt" name="debt" placeholder="($)" required ><br>
-		<label for="debt">Amount Available for a Down Payment:</label><br>
-        <input type="number" id="downpayment" name="downpayment" placeholder="($)" required ><br>
-        <button type="submit">Submit</button> <br>
+        <label for="creditscore_poor" id="creditscore_poor">350-629 (Poor)</label><br>
+        <input type="radio" id="creditscore_average" name="creditscore" value="630-689 ">
+        <label for="creditscore_average" id="creditscore_average">630-689 (Average)</label><br>
+        <input type="radio" id="creditscore_good" name="creditscore" value="690-719 ">
+        <label for="creditscore_good" id="creditscore_good">690-719 (Good)</label><br>
+        <input type="radio" id="creditscore_excellent" name="creditscore" value="720-850 ">
+        <label for="creditscore_excellent" id="creditscore_excellent">720-850 (Excellent!)</label><br>
+        <label for="debt">Monthly Debts/Obligations:<span class="hover-description">Enter the total amount of your monthly debt payments.</span></label><br>
+        <input type="number" id="debt" name="debt" placeholder="($)" required><br>
+        <label for="downpayment">Amount Available for a Down Payment:<span class="hover-description">Enter the total amount of money you have available for a down payment.</span></label><br>
+        <input type="number" id="downpayment" name="downpayment" placeholder="($)" required><br>
+        <button type="submit" id="submit-btn">Submit</button> <br>
         <p id="form-note">Hover over field label for additional information (e.g. Average Income)</p>
-      </form>
-	  <br>
+      </form><br>
+      <div class="hidden" id="mortgage-rate"></div>
+      <p class="hidden" id="results-paragraph">
+        Your affordability range is determined by the mortgage amounts available at 20% DTI and 40%.
+        Based on the information provided, this range is as follows:</p><br>
+      <p class="hidden" id="user-20%-DTI">20% DTI: </p><br>
+      <p class="hidden" id="user-40%-DTI">40% DTI: </p><br>
+      <p class="hidden" id="user-prompt2">(Press enter to continue)</p><br>
     </main>
 
     <footer>
-	  <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="50" height="50"></a>
+	    <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="50" height="50"></a>
       <a href="https://github.com/rodmen07"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" width="50" height="50"></a>
     </footer>
   </body>

@@ -15,7 +15,7 @@ In the home affordability calculator, users will be able to:
 -   View a list of US cities with average home prices within the borrower's affordability range
 -   View the average home price for a city within the generated list.
 -   { Bonus *feature* } Adjust results based on Cost of Living adjustments.
--   { Bonus *feature* } Forward borrower information to prospective lenders.
+-   { Bonus *feature* } Expand search to include major US cities.
 
 In addition, this project will include:
 
@@ -69,7 +69,7 @@ Open layers library for map overlay
 
 -   Friday Afternoon: Start working on initial landing page/informational pages/transitions
 -   Saturday: Start working on form functionality for user data
--   Sunday: Start working on affordability formula and query results
+-   Sunday: Start working on affordability formula, print DTIs, and query results
 -   Monday: Start working on map visualizations, state-specific visualizations
 -   Tuesday: Continue working on incomplete features/address any roadblocks
 -   Wednesday: Finish working on incomplete features/address any roadblocks
