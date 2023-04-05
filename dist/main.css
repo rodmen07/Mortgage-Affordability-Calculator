@@ -39,6 +39,7 @@ input {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   height: 1px;
+  margin: 1px;
 }
 
 .visible1 {
@@ -69,6 +70,17 @@ input {
   border-radius: 5px;
 }
 
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.dot {
+  fill: steelblue;
+  stroke: none;
+}
+
 label:hover .hover-description {
   visibility: visible;
   opacity: 1;
@@ -88,4 +100,10 @@ label:hover .hover-description {
 
 #creditscore_excellent {
   background-color: rgb(10, 128, 26);
+}
+
+#chart {
+  width: 80%;
+  height: 400px;
+  margin: 50px auto;
 }

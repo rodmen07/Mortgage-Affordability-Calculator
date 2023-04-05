@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
+    <script src="./dist/main.js" defer></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
 
   <body>
@@ -18,7 +19,7 @@
 
     <main>
       <p class="hidden" id="main-paragraph">Welcome, please enter the information for the fields provided below. <br>
-		    This information will be used to display home affordability in different cities around the US. <br>
+		    This information will be used to display home affordability in different states in the US. <br>
 		    Note: the information provided will not be collected, persisted, or otherwise utilized for any purpose outside of calculations within the given session. <br>
       </p>
       <p class="hidden" id="user-prompt1">(Press enter to continue)</p>
@@ -40,15 +41,17 @@
         <label for="downpayment">Amount Available for a Down Payment:<span class="hover-description">Enter the total amount of money you have available for a down payment.</span></label><br>
         <input type="number" id="downpayment" name="downpayment" placeholder="($)" required><br>
         <button type="submit" id="submit-btn">Submit</button> <br>
-        <p id="form-note">Hover over field label for additional information (e.g. Average Income)</p>
+        <p id="form-note">Hover over each field label for additional information (e.g. Average Income)</p>
       </form><br>
       <div class="hidden" id="mortgage-rate"></div>
       <p class="hidden" id="results-paragraph">
-        Your affordability range is determined by the mortgage amounts available at 20% DTI and 40%.
+        Your affordability range is determined by the mortgage amounts available at 20% and 40% DTI.
         Based on the information provided, this range is as follows:</p><br>
       <p class="hidden" id="user-20%-DTI">20% DTI: </p><br>
       <p class="hidden" id="user-40%-DTI">40% DTI: </p><br>
       <p class="hidden" id="user-prompt2">(Press enter to continue)</p><br>
+      <p class="hidden" id="chart-title">States with median home prices within affordability range.</p><br>
+      <div class="hidden" id="div" width="960" height="500"></div>
     </main>
 
     <footer>
