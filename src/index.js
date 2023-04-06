@@ -51,7 +51,6 @@ submitBtn.addEventListener("click", (event) => {
       const latestValue = data.observations[0].value;
       const resultElement = document.getElementById("mortgage-rate");
       resultElement.innerHTML = `The current average mortgage rate is ${latestValue}%`;
-      console.log(latestValue);
       return latestValue;
     })
     .catch(error => {
