@@ -41,24 +41,56 @@ submitBtn.addEventListener("click", (event) => {
   const creditScore = document.querySelector('input[name="creditscore"]:checked').value;
   const debt = document.getElementById("debt").value;
   const downPayment = parseInt(document.getElementById("downpayment").value);
-  function getMortgageRate() {
+
     // http://localhost:5000/mortgagerate?series_id=${seriesId}
     //`https://cor-proxy.onrender.com/?url=https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${API_KEY}&file_type=json`, { mode: 'cors' }
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`)
-    .then(response => console.log(response))
-      .then(response => {
-        return response.json();
-    })
-    .then(data => {
+  //  function getMortgageRate() {
+    // This makes the local version work:
+    // return fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       const latestValue = data.observations[0].value;
+    //       const resultElement = document.getElementById("mortgage-rate");
+    //       resultElement.innerHTML = `The current average mortgage rate is ${latestValue}%`;
+    //       return latestValue;
+    //     })
+    //     .catch(error => {
+    //       console.error(error);
+    //     });
+    // };
+
+    // https://cor-proxy.onrender.com/?url=${encodeURIComponent(url)}
+  // This is the render version:
+  //   const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`;
+  //   const proxyUrl = `http://localhost:5000/?url=${encodeURIComponent(url)}`;
+  //   return fetch(proxyUrl)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       const latestValue = data.observations[0].value;
+  //       const resultElement = document.getElementById("mortgage-rate");
+  //       resultElement.innerHTML = `The current average mortgage rate is ${latestValue}%`;
+  //       return latestValue;
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // };
+  async function getMortgageRate() {
+    const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`;
+    const proxyUrl = `https://cor-proxy.onrender.com/?url=${encodeURIComponent(url)}`;
+    try {
+      const response = await fetch(proxyUrl);
+      const data = await response.json();
       const latestValue = data.observations[0].value;
       const resultElement = document.getElementById("mortgage-rate");
       resultElement.innerHTML = `The current average mortgage rate is ${latestValue}%`;
       return latestValue;
-    })
-    .catch(error => {
+    } catch (error) {
       console.error(error);
-    });
+    }
   };
+  
+
   getMortgageRate().then((mortgageRate) => {
 
     const monthlyIncome = income / 12;
@@ -96,7 +128,10 @@ async function getStatesInRange(minPrice, maxPrice) {
   try {
     const promises = stateAbbreviations.map(async (state, index) => {
       const seriesId = `MEDLISPRI${state}`;
-      const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`);
+      const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`;
+      const proxyUrl = `https://cor-proxy.onrender.com/?url=${encodeURIComponent(url)}`;
+      const response = await fetch(proxyUrl, {mode: 'cors'});
+      // `https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`
       const data = await response.json();
       const lastObservation = data.observations[data.observations.length - 1];
       const price = parseFloat(lastObservation.value);
