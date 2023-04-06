@@ -42,8 +42,9 @@ submitBtn.addEventListener("click", (event) => {
   const debt = document.getElementById("debt").value;
   const downPayment = parseInt(document.getElementById("downpayment").value);
   function getMortgageRate() {
-    // https://cor-proxy.onrender.com/?url=https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${API_KEY}&file_type=json
-    return fetch(`http://localhost:5000/mortgagerate?series_id=${seriesId}`, { mode: 'cors' })
+    // http://localhost:5000/mortgagerate?series_id=${seriesId}
+    //`https://cor-proxy.onrender.com/?url=https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${API_KEY}&file_type=json`, { mode: 'cors' }
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${apiKey}&file_type=json`)
       .then(response => {
         return response.json();
     })
