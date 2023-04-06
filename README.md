@@ -24,29 +24,6 @@ In addition, this project will include:
     -   To-Do List
     -   Planned Future Developments
 
-**Wireframes**
-==============
-
-Initial landing page, includes greeting, author, transparent background image, and background color of light blue. The background image and color should persist through the entire session.
-
-![Untitled](/wireframe/Wireframe1.png)
-
-I'd like for each of the lines below to appear on screen sequentially one at a time, where the user can move forward by pressing the space button.
-
-![Untitled](/wireframe/Wireframe2.png)
-
-Again I would like for each form element to appear on the page sequentially, with the user entering information for each input/field, and continuing by pressing the enter button. Once finished, should display a screen recapping the information provided and having a submit button to confirm and submit the form.
-
-![Untitled](/wireframe/Wireframe3.png)
-
-Once submitted, the page should render the following information:
-
-![Untitled](/wireframe/Wireframe4.png)
-
-Next, based on this range, a list of states with the average home price within the given range should be displayed. Listed states should be shown as green, with non-listed states shaded grey. The states should also appear on the right, with the user able to select a specific state and display the average home price on the map to the right.
-
-![Untitled](/wireframe/Wireframe5.png)
-
 **Technologies, Libraries, APIs**
 =================================
 
@@ -62,17 +39,122 @@ Finally, I utilize the D3 library and HTML/CSS stylings to generate the visualiz
 
 [](https://d3js.org/)<https://d3js.org/>
 
+**Technical Implementation**
+==============
+-   First feature: Generating the user's affordadablity range based on user provided data.
+    -   The formula for calculating a user's affordability range is found by calculating the lower and upper threshold based on DTI:
+    ```js
+    // The following code calculates the user's 20% and 40% DTI once the user submits the form data.
+    const submitBtn = document.getElementById("submit-btn");
+    const dti20 = document.getElementById("user-20%-DTI");
+    const dti40 = document.getElementById("user-40%-DTI");
+    const seriesId = "MORTGAGE30US";
+    const mainParagraph = document.getElementById("main-paragraph");
+    const prompt1 = document.getElementById("user-prompt1");
+    const prompt2 = document.getElementById("user-prompt2");
+    const form = document.getElementsByTagName("form");
+    const results = document.getElementById("results-paragraph");
 
-**Implementation Timeline**
-===========================
+    submitBtn.addEventListener("click", (event) => {
+        // Formatting code here
+        // Save user input values to variables
+        const income = document.getElementById("income").value;
+        const creditScore = document.querySelector('input[name="creditscore"]:checked').value;
+        const debt = document.getElementById("debt").value;
+        const downPayment = parseInt(document.getElementById("downpayment").value);
 
--   Friday Afternoon: Start working on initial landing page/informational pages/transitions
--   Saturday: Start working on form functionality for user data
--   Sunday: Start working on affordability formula, print DTIs, and query results
--   Monday: Start working on map visualizations, state-specific visualizations
--   Tuesday: Continue working on incomplete features/address any roadblocks
--   Wednesday: Finish working on incomplete features/address any roadblocks
--   Thursday Morning: Finalize project/prepare for presentation
+        async function getMortgageRate() {
+            const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`;
+            const proxyUrl = `https://cor-proxy.onrender.com/?url=${encodeURIComponent(url)}`;
+            try {
+            const response = await fetch(proxyUrl);
+            const data = await response.json();
+            const latestValue = data.observations[0].value;
+            const resultElement = document.getElementById("mortgage-rate");
+            resultElement.innerHTML = `The current average mortgage rate is ${latestValue}%`;
+            return latestValue;
+            } catch (error) {
+            console.error(error);
+            }
+        };
+
+        getMortgageRate().then((mortgageRate) => {
+            const monthlyIncome = income / 12;
+            const monthlyAmount20 = monthlyIncome * (0.2 - (debt / monthlyIncome));
+            const yearlyAmount20 = monthlyAmount20 * 12;
+            const monthlyAmount40 = monthlyIncome * (0.4 - (debt / monthlyIncome));
+            const yearlyAmount40 = monthlyAmount40 * 12;
+            let userMortgageRate = mortgageRate;
+            if (creditScore === "excellent") {
+            userMortgageRate = mortgageRate - 0.5;
+            } else if (creditScore === "good") {
+            userMortgageRate = mortgageRate - 0.25;
+            } else if (creditScore === "average") {
+            userMortgageRate = mortgageRate;
+            } else if (creditScore === "poor") {
+            userMortgageRate = mortgageRate + 0.25;
+            }
+            const dti20Result = Math.floor(yearlyAmount20 * 30 * (50 - userMortgageRate) / 100) + downPayment;
+            dti20.innerHTML = `The affordable mortgage amount at 20% DTI at rate of ${userMortgageRate}% is <br> $${dti20Result}.00`;
+            const dti40Result = Math.floor(yearlyAmount40 * 30 * (50 - userMortgageRate) / 100) + downPayment;
+            dti40.innerHTML = `The affordable mortgage amount at 40% DTI at rate of ${userMortgageRate}% is <br> $${dti40Result}.00`;
+            document.addEventListener("keydown", () => {
+                getStatesInRange(dti20Result, dti40Result);
+            });
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    });
+    ```
+-   Second feature: Generating a visualization of US states with median home prices within user's affordability range.
+    -   ```js
+        // The following code sends a request to the FRED API to find states with median home prices within the user's affordable mortgage range.
+        // Reference arrays for state abbreviations and names included here.
+        async function getStatesInRange(minPrice, maxPrice) {
+            try {
+                const promises = stateAbbreviations.map(async (state, index) => {
+                const seriesId = `MEDLISPRI${state}`;
+                const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`;
+                const proxyUrl = `https://cor-proxy.onrender.com/?url=${encodeURIComponent(url)}`;
+                const response = await fetch(proxyUrl, {mode: 'cors'});
+                const data = await response.json();
+                const lastObservation = data.observations[data.observations.length - 1];
+                const price = parseFloat(lastObservation.value);
+                if (price >= minPrice && price <= maxPrice) {
+                    const affordableState = {
+                    abbreviation: state,
+                    name: stateNames[index],
+                    medianHomePrice: price
+                    };
+                    return affordableState;
+                }
+                });
+                const affordableStates = await Promise.all(promises);
+                const filteredAffordableStates = affordableStates.filter(affordableState => affordableState != undefined);
+                const chart = BarChart(filteredAffordableStates, {
+                x: d => d.abbreviation,
+                y: d => d.medianHomePrice,
+                xDomain: d3.groupSort(filteredAffordableStates, ([d]) => -d.medianHomePrice, d => d.abbreviation), // sort by descending medianHomePrice
+                yFormat: "$.1s", // display y-axis values in thousands (e.g. 350000 as 350k)
+                yLabel: "↑ Median Home Price",
+                width : 960,
+                height: 500,
+                color: "steelblue"
+                });
+                const div = document.getElementById("div");
+                const chartTitle = document.getElementById("chart-title");
+                div.appendChild(chart);
+                chartTitle.classList.add("visible2");
+                chartTitle.classList.remove("hidden");
+                div.classList.add("visible2");
+                div.classList.remove("hidden");
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        ```
+
 
 **FUTURE IMPLEMENTATION/TO-DOs**
 =============
