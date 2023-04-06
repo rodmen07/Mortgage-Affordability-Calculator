@@ -117,9 +117,9 @@ async function getStatesInRange(minPrice, maxPrice) {
       xDomain: d3.groupSort(filteredAffordableStates, ([d]) => -d.medianHomePrice, d => d.abbreviation), // sort by descending medianHomePrice
       yFormat: "$.1s", // display y-axis values in thousands (e.g. 350000 as 350k)
       yLabel: "↑ Median Home Price",
-      width : 960,
+      width : 1200,
       height: 500,
-      color: "steelblue"
+      color: "#15761d"
     });
     const div = document.getElementById("div");
     const chartTitle = document.getElementById("chart-title");
