@@ -44,7 +44,7 @@ submitBtn.addEventListener("click", (event) => {
   function getMortgageRate() {
     // http://localhost:5000/mortgagerate?series_id=${seriesId}
     //`https://cor-proxy.onrender.com/?url=https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${API_KEY}&file_type=json`, { mode: 'cors' }
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${apiKey}&file_type=json`)
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`)
       .then(response => {
         return response.json();
     })
