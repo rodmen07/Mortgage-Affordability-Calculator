@@ -45,6 +45,7 @@ submitBtn.addEventListener("click", (event) => {
     // http://localhost:5000/mortgagerate?series_id=${seriesId}
     //`https://cor-proxy.onrender.com/?url=https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${API_KEY}&file_type=json`, { mode: 'cors' }
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`)
+    .then(response => console.log(response))
       .then(response => {
         return response.json();
     })
@@ -95,8 +96,7 @@ async function getStatesInRange(minPrice, maxPrice) {
   try {
     const promises = stateAbbreviations.map(async (state, index) => {
       const seriesId = `MEDLISPRI${state}`;
-      const apiKey = "cc485c86412c9dee7cd0370084ce6c59";
-      const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${apiKey}&file_type=json`);
+      const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`);
       const data = await response.json();
       const lastObservation = data.observations[data.observations.length - 1];
       const price = parseFloat(lastObservation.value);
