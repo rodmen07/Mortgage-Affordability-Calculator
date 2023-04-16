@@ -15,7 +15,7 @@ export default function calculateDTIRange(){
     const addHidden = [mainParagraph, prompt1, form];
     const showElements = [prompt2, results, dti20, dti40];
 
-    submitBtn.addEventListener("click", (event) => {
+    submitBtn.addEventListener("submit", (event) => {
         event.preventDefault();
         removeVisible2.forEach(element => {
             element.classList.remove("visible2");
