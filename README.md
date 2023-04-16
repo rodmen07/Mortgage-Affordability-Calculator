@@ -1,8 +1,8 @@
 Background
 ==========
 
-My project is an interactive demo for a home affordability calculator.
-This is hosted on GitHub pages here: https://rodmen07.github.io/JavaScript-Project/
+This project is an interactive demo for a home affordability calculator.
+It is currently hosted on GitHub pages here: https://rodmen07.github.io/JavaScript-Project/
 
 On the initial landing page, the user would select the different categories for their income (average of last 3-5 years), credit score range, monthly debts/obligations, and down payment available. The page would then display the different amounts that a prospective borrower would qualify for at various (Debt to Income) DTI categories, and then show which states in the US have average home prices within the borrower's affordability range.
 
@@ -161,6 +161,7 @@ Finally, I utilize the D3 library and HTML/CSS stylings to generate the visualiz
 -   Implement mapping in visualization.
 -   { Bonus *feature* } Adjust results based on Cost of Living adjustments.
 -   { Bonus *feature* } Expand search to include major US cities.
+-   [Bug] Submit button preventDefault() causes validations to overriden. Form is submittable with "enter" key within fields, bypassing required fields.
 
 **Live Project**
 ----------------
