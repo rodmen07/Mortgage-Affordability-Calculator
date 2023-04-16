@@ -5,4 +5,5 @@ export function handleEnterForm1(event) {
       form.classList.add("visible2");
       form.classList.remove("hidden");
     }
-  }
+}
+
