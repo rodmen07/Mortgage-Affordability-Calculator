@@ -1,3 +1,125 @@
-header{font-family:Arial,Helvetica,sans-serif;font-size:30px;font-weight:bold;color:#15761d;text-decoration:underline;opacity:.8}body{text-align:center;opacity:.8;background-image:url("https://www.usnews.com/dims4/USNEWS/e7cf3e3/2147483647/thumbnail/970x647/quality/85/?url=https%3A%2F%2Fwww.usnews.com%2Fcmsmedia%2F55%2F1a%2F4d22737c4537af16461ac1a14c3e%2F140703-homesneighborhood-stock.jpg");background-size:cover}main{background-color:#88cefd}footer{background-color:#88cefd;display:flex;justify-content:space-evenly}form>label{width:200px}input{margin-bottom:10px}.hidden{opacity:0;transition:opacity .5s ease-in-out;height:1px;margin:1px}.visible1{opacity:1;transition:opacity 1s ease-in-out}.visible2{opacity:1;transition:opacity 3s ease-in-out}.visible3{opacity:1;transition:opacity 5s ease-in-out}.hover-description{visibility:hidden;opacity:0;transition:opacity .2s ease-in-out;position:absolute;z-index:1;background-color:#333;color:#fff;padding:5px;border-radius:5px}.line{fill:none;stroke:#4682b4;stroke-width:2px}.dot{fill:#4682b4;stroke:none}label:hover .hover-description{visibility:visible;opacity:1}#creditscore_poor{background-color:#b91818}#creditscore_average{background-color:#dde011}#creditscore_good{background-color:#1264e0}#creditscore_excellent{background-color:#0a801a}#chart{width:80%;height:400px;margin:50px auto}#main-paragraph{color:#4e4d4d}#div svg{opacity:1;background-color:#fff;padding:20px}#chart-title{text-decoration:underline;font-size:16;font-weight:700}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+header {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: #15761d;
+  text-decoration: underline;
+  opacity: 0.8;
+}
 
-/*# sourceMappingURL=main.css.map*/
+body {
+  text-align: center;
+  opacity: 0.8;
+  background-image: url("https://www.usnews.com/dims4/USNEWS/e7cf3e3/2147483647/thumbnail/970x647/quality/85/?url=https%3A%2F%2Fwww.usnews.com%2Fcmsmedia%2F55%2F1a%2F4d22737c4537af16461ac1a14c3e%2F140703-homesneighborhood-stock.jpg");
+  background-size: cover;
+}
+
+main {
+  background-color: rgb(136, 206, 253);
+}
+
+footer {
+  background-color: rgb(136, 206, 253);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+form > label {
+  width: 200px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  height: 1px;
+  margin: 1px;
+}
+
+.visible1 {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.visible2 {
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
+}
+
+.visible3 {
+  opacity: 1;
+  transition: opacity 5s ease-in-out;
+}
+
+/* The following styles make the hover-description boxes visible only on hover */
+.hover-description {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  position: absolute;
+  z-index: 1;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.dot {
+  fill: steelblue;
+  stroke: none;
+}
+
+label:hover .hover-description {
+  visibility: visible;
+  opacity: 1;
+}
+
+#creditscore_poor {
+  background-color: rgb(185, 24, 24);
+}
+
+#creditscore_average {
+  background-color: rgb(221, 224, 17);
+}
+
+#creditscore_good {
+  background-color: rgb(18, 100, 224);
+}
+
+#creditscore_excellent {
+  background-color: rgb(10, 128, 26);
+}
+
+#chart {
+  width: 80%;
+  height: 400px;
+  margin: 50px auto;
+}
+
+#main-paragraph {
+  color: rgb(78, 77, 77);
+}
+
+#div svg {
+  opacity: 1;
+  background-color: #fff;
+  padding: 20px;
+}
+
+#chart-title {
+  text-decoration: underline;
+  font-size: 16;
+  font-weight: 700;
+}
