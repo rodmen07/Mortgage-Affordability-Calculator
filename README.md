@@ -2,7 +2,7 @@ Background
 ==========
 
 This project is an interactive demo for a home affordability calculator.
-It is currently hosted on GitHub pages here: C:\Users\rodme\OneDrive\Pictures\2023-05-16 11_29_18-Home Affordability Calculator.png
+It is currently hosted on GitHub pages here: https://rodmen07.github.io/Mortgage-Affordability-Calculator/
 
 On the initial landing page, the user would select the different categories for their income (average of last 3-5 years), credit score range, monthly debts/obligations, and down payment available. The page would then display the different amounts that a prospective borrower would qualify for at various (Debt to Income) DTI categories, and then show which states in the US have average home prices within the borrower's affordability range.
 
