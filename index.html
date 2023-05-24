@@ -26,7 +26,7 @@
       <p class="hidden" id="user-prompt1">(Press enter to continue)</p>
       <form class="hidden" id="user-form">
         <label for="income">Average Income:<span class="hover-description">Estimated Average Household Income for the last 3-5 years.</span></label><br>
-        <input type="number" id="income" name="income" required placeholder="($)">
+        <input type="number" id="income" name="income" required placeholder="$50000" min="50000"><br>
         <br>
         <label for="creditscore">Credit Score Range:<span class="hover-description">Choose the range that your credit score falls into.</span></label><br>
         <input type="radio" id="creditscore_poor" name="creditscore" value="poor">
@@ -40,7 +40,7 @@
         <label for="debt">Monthly Debts/Obligations:<span class="hover-description">Enter the total amount of your monthly debt payments.</span></label><br>
         <input type="number" id="debt" name="debt" placeholder="($)" required><br>
         <label for="downpayment">Amount Available for a Down Payment:<span class="hover-description">Enter the total amount of money you have available for a down payment.</span></label><br>
-        <input type="number" id="downpayment" name="downpayment" placeholder="($)" required><br>
+        <input type="number" id="downpayment" name="downpayment" placeholder="($)" required min="0"><br>
         <button type="submit" id="submit-btn">Submit</button> <br>
         <p id="form-note">Hover over each field label for additional information (e.g. Average Income)</p>
       </form><br>
