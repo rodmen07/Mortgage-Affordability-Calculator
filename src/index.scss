@@ -1,5 +1,4 @@
 header {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-weight: bold;
     color: #15761d;
@@ -12,12 +11,16 @@ body {
     opacity: 0.8;
     background-image: url("https://www.usnews.com/dims4/USNEWS/e7cf3e3/2147483647/thumbnail/970x647/quality/85/?url=https%3A%2F%2Fwww.usnews.com%2Fcmsmedia%2F55%2F1a%2F4d22737c4537af16461ac1a14c3e%2F140703-homesneighborhood-stock.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
     font-size: 18px;
 }
 
 main {
     background-color: rgb(136, 206, 253);
-    // opacity: 0.8;
+    font-size: 24px;
+
 }
 
 footer {
@@ -108,11 +111,11 @@ label:hover .hover-description {
     width: 80%;
     height: 400px;
     margin: 50px auto;
+    font-size: large;
 }
 
 #main-paragraph {
     color: black;
-    font-size: 18px;
 }
 
 #div svg{
