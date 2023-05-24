@@ -49,7 +49,7 @@ async function getMortgageRate() {
     const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=cc485c86412c9dee7cd0370084ce6c59&file_type=json`;
     // const proxyUrl = `https://cor-proxy.onrender.com/?url=${encodeURIComponent(url)}`;
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {mode: 'cors'});
       const data = await response.json();
       const latestValue = data.observations[0].value;
       const resultElement = document.getElementById("mortgage-rate");
