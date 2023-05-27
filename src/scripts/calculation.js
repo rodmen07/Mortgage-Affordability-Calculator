@@ -68,18 +68,18 @@ function calculateMortgageAmounts(mortgageRate, income, creditScore, debt, downP
     const yearlyAmount40 = monthlyAmount40 * 12;
     let userMortgageRate = mortgageRate;
     if (creditScore === "excellent") {
-      userMortgageRate = mortgageRate - 0.5;
+      userMortgageRate = parseFloat(mortgageRate) - 0.5;
     } else if (creditScore === "good") {
-      userMortgageRate = mortgageRate - 0.25;
+      userMortgageRate = parseFloat(mortgageRate) - 0.25;
     } else if (creditScore === "average") {
-      userMortgageRate = mortgageRate;
+      userMortgageRate = parseFloat(mortgageRate);
     } else if (creditScore === "poor") {
-      userMortgageRate = mortgageRate + 0.25;
+      userMortgageRate = parseFloat(mortgageRate) + 0.25;
     }
     const dti20Result = Math.floor(yearlyAmount20 * 30 * (50 - userMortgageRate) / 100) + downPayment;
-    dti20.innerHTML = `The affordable mortgage amount at 20% DTI at rate of ${userMortgageRate}% is <br> $${dti20Result}.00`;
+    dti20.innerHTML = `The affordable mortgage amount at 20% DTI at rate of ${userMortgageRate}% is <br> $${dti20Result.toLocaleString()}.00`;
     const dti40Result = Math.floor(yearlyAmount40 * 30 * (50 - userMortgageRate) / 100) + downPayment;
-    dti40.innerHTML = `The affordable mortgage amount at 40% DTI at rate of ${userMortgageRate}% is <br> $${dti40Result}.00`;
+    dti40.innerHTML = `The affordable mortgage amount at 40% DTI at rate of ${userMortgageRate}% is <br> $${dti40Result.toLocaleString()}.00`;
     document.addEventListener("keydown", handleEnterForm2);
     function handleEnterForm2(event) {
         if (event.code === "Enter") {
