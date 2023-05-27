@@ -1,4 +1,4 @@
-Background
+Background 
 ==========
 
 This project is an interactive demo for a home affordability calculator.
