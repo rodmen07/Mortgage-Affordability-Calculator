@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
   <head>
     <title> Home Affordability Calculator </title>
@@ -29,13 +29,13 @@
         </div>
         <label for="creditscore" class="form-label">Credit Score Range: <br><span class="hover-description">Choose the range that your credit score falls into.</span></label>
         <input type="radio" id="creditscore_poor" name="creditscore" value="poor">
-        <label for="creditscore_poor" id="creditscore_poor">350-629</label><br>
+        <label for="creditscore_poor" id="creditscore_poor_num">350-629</label><br>
         <input type="radio" id="creditscore_average" name="creditscore" value="average">
-        <label for="creditscore_average" id="creditscore_average">630-689</label><br>
+        <label for="creditscore_average" id="creditscore_average_num">630-689</label><br>
         <input type="radio" id="creditscore_good" name="creditscore" value="good">
-        <label for="creditscore_good" id="creditscore_good">690-719</label><br>
+        <label for="creditscore_good" id="creditscore_good_num">690-719</label><br>
         <input type="radio" id="creditscore_excellent" name="creditscore" value="excellent" required>
-        <label for="creditscore_excellent" id="creditscore_excellent">720-850</label><br><br>
+        <label for="creditscore_excellent" id="creditscore_excellent_num">720-850</label><br><br>
         <label for="debt" class="form-label">Monthly Debts/Obligations:<span class="hover-description">Enter the total amount of your monthly debt payments.</span></label><br>
         <div class="slider">
           <input type="range" id="debt" name="debt" required min="0" max="1000">
@@ -56,13 +56,13 @@
       <p class="hidden" id="user-20%-DTI">20% DTI: </p><br>
       <p class="hidden" id="user-40%-DTI">40% DTI: </p><br>
       <p class="hidden" id="user-prompt2">(Press enter to continue)</p><br>
-      <p class="hidden" id="chart-title">States with median home prices within affordability range</p><br>
+      <p class="hidden" id="chart-title">States with median home prices within affordability range: </p><br>
       <div class="hidden" id="div" width="1200" height="500"></div>
     </main>
 
     <footer>
-	    <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="50" height="50"></a>
-      <a href="https://github.com/rodmen07"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" width="50" height="50"></a>
+	    <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="50" height="50" alt="linkedin profile"></a>
+      <a href="https://github.com/rodmen07"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" width="50" height="50" alt="github profile"></a>
     </footer>
   </body>
 </html>

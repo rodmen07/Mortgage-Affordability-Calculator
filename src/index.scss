@@ -16,7 +16,6 @@ body {
     text-align: center;
     font-size: 18px;
     background-color: rgb(136, 206, 253);
-    opacity: 0.99;
     border-radius: 10px;
 }
 
@@ -100,22 +99,22 @@ label:hover .hover-description {
 }
 
 // ID selectors
-#creditscore_poor {
+#creditscore_poor_num {
     background-color: rgb(185, 24, 24);
     border-radius: 2px;
 }
 
-#creditscore_average {
+#creditscore_average_num {
     background-color: rgb(221, 224, 17);
     border-radius: 2px;
 }
 
-#creditscore_good {
+#creditscore_good_num {
     background-color: rgb(18, 100, 224);
     border-radius: 2px;
 }
 
-#creditscore_excellent {
+#creditscore_excellent_num {
     background-color: rgb(10, 128, 26);
     border-radius: 2px;
 }
