@@ -154,13 +154,3 @@ Finally, I utilize the D3 library and HTML/CSS stylings to generate the visualiz
             }
         }
         ```
-
-
-**FUTURE IMPLEMENTATION/TO-DOs**
-=============
--   Implement mapping in visualization.
--   { Bonus *feature* } Adjust results based on Cost of Living adjustments.
--   { Bonus *feature* } Expand search to include major US cities.
--   [Bug/FIXED] Enter button generates additional visualizations of states within affordability range, creates additional fetch requests each time.
--   [Bug/FIXED] Submit button preventDefault() causes validations to overriden. Form is submittable with "enter" key within fields, bypassing required fields.
--   [To-Do] Add visual demo to README, clean up technical implementation section/reflect changes to structure.
