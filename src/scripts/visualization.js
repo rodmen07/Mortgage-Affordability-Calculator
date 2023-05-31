@@ -32,7 +32,7 @@ export default async function getStatesInRange(minPrice, maxPrice) {
       yFormat: "$.1s", // display y-axis values in thousands (e.g. 350000 as 350k)
       yLabel: "↑ Median Home Price",
       width : 1200,
-      height: 500,
+      height: 400,
       color: "#15761d"
     });
     const div = document.getElementById("div");
@@ -60,9 +60,9 @@ function BarChart(data, {
     marginTop = 20, // the top margin, in pixels
     marginRight = 0, // the right margin, in pixels
     marginBottom = 30, // the bottom margin, in pixels
-    marginLeft = 40, // the left margin, in pixels
-    width = 640, // the outer width of the chart, in pixels
-    height = 400, // the outer height of the chart, in pixels
+    marginLeft = 70, // the left margin, in pixels
+    width, // the outer width of the chart, in pixels
+    height, // the outer height of the chart, in pixels
     xDomain, // an array of (ordinal) x-values
     xRange = [marginLeft, width - marginRight], // [left, right]
     yType = d3.scaleLinear, // y-scale type
@@ -71,7 +71,7 @@ function BarChart(data, {
     xPadding = 0.1, // amount of x-range to reserve to separate bars
     yFormat, // a format specifier string for the y-axis
     yLabel, // a label for the y-axis
-    color = "currentColor" // bar fill color
+    color = "currentColor", // bar fill color
 } = {}) {
     // Compute values.
     const X = d3.map(data, x);
@@ -116,7 +116,7 @@ function BarChart(data, {
             .attr("stroke-opacity", 0.1))
         .call(g => g.append("text")
             .attr("x", -marginLeft)
-            .attr("y", 10)
+            .attr("y", 15)
             .attr("fill", "currentColor")
             .attr("text-anchor", "start")
             .text(yLabel));

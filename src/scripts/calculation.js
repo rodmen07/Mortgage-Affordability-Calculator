@@ -3,11 +3,11 @@ import getStatesInRange from "./visualization";
 
 const dti20 = document.getElementById("user-20%-DTI");
 const dti40 = document.getElementById("user-40%-DTI");
+const prompt2 = document.getElementById("user-prompt2");
 
 export default function calculateDTIRange(){
     const mainParagraph = document.getElementById("main-paragraph");
     const prompt1 = document.getElementById("user-prompt1");
-    const prompt2 = document.getElementById("user-prompt2");
     const form = document.querySelector("form");
     const results = document.getElementById("results-paragraph");
     const removeVisible2 = [mainParagraph, form];
@@ -85,6 +85,8 @@ function calculateMortgageAmounts(mortgageRate, income, creditScore, debt, downP
         if (event.code === "Enter") {
           getStatesInRange(dti20Result, dti40Result);
           document.removeEventListener("keydown", handleEnterForm2);
+          prompt2.classList.add("hidden");
+          prompt2.classList.remove("visible1");
         }
     }
 }
