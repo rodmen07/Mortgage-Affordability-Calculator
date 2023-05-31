@@ -27,7 +27,7 @@
           <input type="range" id="income" name="income" required placeholder="($)" min="60000" max="200000">
           <output for="income" id="income-value"></output><br>
         </div>
-        <label for="creditscore" class="form-label">Credit Score Range: <br><span class="hover-description">Choose the range that your credit score falls into.</span></label>
+        <div class="form-label">Credit Score Range: <br><span class="hover-description">Choose the range that your credit score falls into.</span></div>
         <input type="radio" id="creditscore_poor" name="creditscore" value="poor">
         <label for="creditscore_poor" id="creditscore_poor_num">350-629</label><br>
         <input type="radio" id="creditscore_average" name="creditscore" value="average">
@@ -57,7 +57,8 @@
       <p class="hidden" id="user-40%-DTI">40% DTI: </p><br>
       <p class="hidden" id="user-prompt2">(Press enter to continue)</p><br>
       <p class="hidden" id="chart-title">States with median home prices within affordability range: </p><br>
-      <div class="hidden" id="div" width="1200" height="500"></div>
+      <div class="hidden" id="chart" width="1200" height="400"></div>
+      <button class="hidden" id="reset-button">Click to Reset</button><br>
     </main>
 
     <footer>

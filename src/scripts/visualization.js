@@ -35,10 +35,10 @@ export default async function getStatesInRange(minPrice, maxPrice) {
       height: 400,
       color: "#15761d"
     });
-    const div = document.getElementById("div");
+    const div = document.getElementById("chart");
     const chartTitle = document.getElementById("chart-title");
     div.appendChild(chart);
-    chartTitle.classList.add("visible2");
+    chartTitle.classList.add("visible1");
     chartTitle.classList.remove("hidden");
     div.classList.add("visible2");
     div.classList.remove("hidden");
