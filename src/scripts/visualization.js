@@ -37,11 +37,14 @@ export default async function getStatesInRange(minPrice, maxPrice) {
     });
     const div = document.getElementById("chart");
     const chartTitle = document.getElementById("chart-title");
+    const userTip1 = document.getElementById("user-tip-1");
     div.appendChild(chart);
     chartTitle.classList.add("visible1");
     chartTitle.classList.remove("hidden");
     div.classList.add("visible2");
     div.classList.remove("hidden");
+    userTip1.classList.add("visible1");
+    userTip1.classList.remove("hidden");
   } catch (error) {
     console.error(error);
   }

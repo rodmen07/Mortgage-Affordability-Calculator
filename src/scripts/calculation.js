@@ -4,13 +4,13 @@ import getStatesInRange from "./visualization";
 const dti20 = document.getElementById("user-20%-DTI");
 const dti40 = document.getElementById("user-40%-DTI");
 const prompt2 = document.getElementById("user-prompt2");
+const mainParagraph = document.getElementById("main-paragraph");
+const prompt1 = document.getElementById("user-prompt1");
+const form = document.querySelector("form");
+const formNote = document.getElementById("form-note");
+const results = document.getElementById("results-paragraph");
 
 export default function calculateDTIRange(){
-    const mainParagraph = document.getElementById("main-paragraph");
-    const prompt1 = document.getElementById("user-prompt1");
-    const form = document.querySelector("form");
-    const formNote = document.getElementById("form-note");
-    const results = document.getElementById("results-paragraph");
     const removeVisible2 = [mainParagraph, form];
     const addHidden = [mainParagraph, prompt1, form, formNote];
     const showElements = [prompt2, results, dti20, dti40];
