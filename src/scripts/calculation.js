@@ -9,6 +9,7 @@ const prompt1 = document.getElementById("user-prompt1");
 const form = document.querySelector("form");
 const formNote = document.getElementById("form-note");
 const results = document.getElementById("results-paragraph");
+const reset_button = document.getElementById("reset-button");
 
 export default function calculateDTIRange(){
     const removeVisible2 = [mainParagraph, form];
@@ -62,7 +63,6 @@ async function getMortgageRate() {
   };
 
 function calculateMortgageAmounts(mortgageRate, income, creditScore, debt, downPayment) {
-  const reset_button = document.getElementById("reset-button");
   const monthlyIncome = income / 12;
   const monthlyAmount20 = monthlyIncome * (0.2 - (debt / monthlyIncome));
   const yearlyAmount20 = monthlyAmount20 * 12;
