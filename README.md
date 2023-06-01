@@ -154,33 +154,3 @@ Finally, I utilize the D3 library and HTML/CSS stylings to generate the visualiz
             }
         }
         ```
-
-
-**FUTURE IMPLEMENTATION/TO-DOs**
-=============
--   Implement mapping in visualization.
--   { Bonus *feature* } Adjust results based on Cost of Living adjustments.
--   { Bonus *feature* } Expand search to include major US cities.
--   [Bug/FIXED] Enter button generates additional visualizations of states within affordability range, creates additional fetch requests each time.
--   [Bug/FIXED] Submit button preventDefault() causes validations to overriden. Form is submittable with "enter" key within fields, bypassing required fields.
--   [To-Do] Add visual demo to README, clean up technical implementation section/reflect changes to structure.
-
-**Live Project**
-----------------
-
--   [X] Includes links to your portfolio website, Github, and LinkedIn.
--   [X] Landing page/modal with obvious, clear instructions.
--   [X] Interactivity of some kind.
--   [X] Well styled, clean frontend.
--   [N/A] If it has music, the option to mute or stop it.
-
-**Production README**
----------------------
-
--   [X] Link to live version.
--   [X] Instructions on how to play/interact with the project.
--   [X] List of technologies / libraries / APIs used.
--   [ ] Technical implementation details with (good-looking) code snippets.
--   [X] To-dos / future features.
--   [X] No **.DS_Store** files / debuggers / console.logs.
--   [*] Organized file structure, with **/src** and **/dist** directories. (Refactor for modularization, readability in progress)
